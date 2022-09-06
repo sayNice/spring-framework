@@ -1,0 +1,31 @@
+plugins {
+    id 'java'
+}
+
+group 'org.springframework'
+version '6.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api(project(":spring-core"))
+    optional(project(":spring-aop"))
+    optional(project(":spring-beans"))
+    optional(project(":spring-context"))
+    optional(project(":spring-jdbc"))
+    optional(project(":spring-orm"))
+    optional(project(":spring-tx"))
+    optional(project(":spring-web"))
+    testImplementation(testFixtures(project(":spring-context")))
+    testImplementation(testFixtures(project(":spring-core")))
+    testImplementation(testFixtures(project(":spring-tx")))
+    testImplementation(testFixtures(project(":spring-web")))
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+test {
+    useJUnitPlatform()
+}
